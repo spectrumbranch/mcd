@@ -1,0 +1,9 @@
+{
+	plots: [
+		{ player: 'Harrydg', timestamp: '2014-09-17 00:31:48', coords: { x: 0,  y: 60, z: 0 } },
+		//...
+		{ player: 'fiddlecastro', timestamp: '2014-09-17 00:36:48', coords: { x: 0,  y: 60, z: 0 } }
+	],
+	lastUpdated: '2014-09-17 00:36:48',
+	count: 2
+}

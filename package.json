@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "generate_api_key": "node ./scripts/generate_api_key.js"
+    "generate_api_key": "node ./scripts/generate_api_key.js",
+    "parse_logs": "node ./scripts/parse_logs.js"
   },
   "author": "Christopher Bebry",
   "license": "MIT",
@@ -13,6 +14,7 @@
     "hapi": "^6.7.1",
     "node-uuid": "^1.4.1",
     "redis": "^0.12.1",
-    "request": "^2.42.0"
+    "request": "^2.42.0",
+    "async": "^0.9.0"
   }
 }
