@@ -2,9 +2,14 @@
 module.exports = {
 	"patterns": [
 		{
-			"name": "kill",
+			"name": "login",
 			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+)\[\/((?:\d+[\.:]){4}\d+)\] logged in with entity id \d+ at \(([-\d\.]+), ([-\d\.]+), ([-\d\.]+)\)/,
 			"output": ['time', 'user', 'ip', 'x', 'y', 'z']
+		},
+		{
+			"name": "logout",
+			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (.+) left the game/,
+			"output": ['time', 'user']
 		},
 		{
 			"name": "kill",
@@ -28,7 +33,7 @@ module.exports = {
 		},
 		{
 			"name": "death",
-			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) drowned(?: whilst trying to escape (\w+))?/,
+			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) drowned(?: whilst trying to escape (.+))?/,
 			"output": ['time', 'target', 'actor']
 		},
 		{
@@ -68,8 +73,8 @@ module.exports = {
 		},
 		{
 			"name": "kill",
-			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) got finished off by (\w+)(?: using \[(\w+)\])?/,
-			"output": ['time', 'target', 'actor', 'weapon']
+			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) got finished off by (.+)/,
+			"output": ['time', 'target', 'actor']
 		},
 		{
 			"name": "death",
@@ -93,42 +98,42 @@ module.exports = {
 		},
 		{
 			"name": "death",
-			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) walked into a cactus whilst trying to escape (\w+)/,
+			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) walked into a cactus whilst trying to escape (.+)/,
 			"output": ['time', 'target', 'actor']
 		},
 		{
 			"name": "kill",
-			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) walked into a fire whilst fighting (\w+)/,
+			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) walked into a fire whilst fighting (.+)/,
 			"output": ['time', 'target', 'actor']
 		},
 		{
 			"name": "kill",
-			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) was blown from a high place by (\w+)/,
+			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) was blown from a high place by (.+)/,
 			"output": ['time', 'target', 'actor']
 		},
 		{
 			"name": "kill",
-			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) was blown up by (\w+)/,
+			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) was blown up by (.+)/,
 			"output": ['time', 'target', 'actor']
 		},
 		{
 			"name": "kill",
-			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) was burnt to a crisp whilst fighting (\w+)/,
+			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) was burnt to a crisp whilst fighting (.+)/,
 			"output": ['time', 'target', 'actor']
 		},
 		{
 			"name": "kill",
-			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) was doomed to fall(?: \(by (\w+)\))?/,
+			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) was doomed to fall(?: \(by (.+)\))?/,
 			"output": ['time', 'target', 'actor']
 		},
 		{
 			"name": "kill",
-			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) was fireballed by (\w+)/,
+			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) was fireballed by (.+)/,
 			"output": ['time', 'target', 'actor']
 		},
 		{
 			"name": "kill",
-			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) was killed by (\w+) using (magic)/,
+			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) was killed by (.+) using (magic)/,
 			"output": ['time', 'target', 'actor']
 		},
 		{
@@ -138,12 +143,12 @@ module.exports = {
 		},
 		{
 			"name": "kill",
-			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) was killed while trying to hurt (\w+)/,
+			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) was killed while trying to hurt (.+)/,
 			"output": ['time', 'target', 'actor']
 		},
 		{
 			"name": "kill",
-			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) was knocked into the void by (\w+)/,
+			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) was knocked into the void by (.+)/,
 			"output": ['time', 'target', 'actor']
 		},
 		{
@@ -153,23 +158,23 @@ module.exports = {
 		},
 		{
 			"name": "kill",
-			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) was shot by (\w+)/,
+			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) was shot by (.+)/,
 			"output": ['time', 'target', 'actor']
 		},
 		{
 			"name": "kill",
-			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) was shot off a ladder by (\w+)/,
+			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) was shot off a ladder by (.+)/,
 			"output": ['time', 'target', 'actor']
 		},
 		{
 			"name": "kill",
-			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) was shot off some vines by (\w+)/,
+			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) was shot off some vines by (.+)/,
 			"output": ['time', 'target', 'actor']
 		},
 		{
 			"name": "kill",
-			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) was slain by (\w+)(?: using \[(\w+)\])?/,
-			"output": ['time', 'target', 'actor', 'weapon']
+			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) was slain by (.+)/,
+			"output": ['time', 'target', 'actor']
 		},
 		{
 			"name": "death",

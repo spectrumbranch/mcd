@@ -53,7 +53,7 @@ server.route([
 		method: 'POST',
 		path: '/apoc_minecraft/whitelist.json',
 		handler: function (request, reply) {
-			if (request.payload) {
+			if (request.payload && request.payload.apikey) {
 				console.log('Hit whitelist at ' + new Date().toString() + ' by IP: ' + request.info.remoteAddress);
 				var apikey = request.payload.apikey;
 				isValidAPIKey(apikey, function(err, isValid) {
@@ -69,6 +69,8 @@ server.route([
 						reply({ success: false });
 					}
 				});
+			} else {
+				reply({ success: false });
 			}
 		}
 	},
@@ -89,8 +91,32 @@ server.route([
 								reply({ success: true, skin: skin });
 							}
 						});
+					} else {
+						reply({ success: false });
 					}
 				});
+			} else {
+				reply({ success: false });
+			}
+		}
+	},
+	{
+		method: 'POST',
+		path: '/apoc_minecraft/parsedLogs.json',
+		handler: function (request, reply) {
+			console.log('test');
+			if (request.payload && request.payload.apikey) {
+				console.log('Hit parsed logs at ' + new Date().toString() + ' by IP: ' + request.info.remoteAddress);
+				var apikey = request.payload.apikey;
+				isValidAPIKey(apikey, function(err, isValid) {
+					if (isValid) {
+						reply.file('output/parsedLogs.json');
+					} else {
+						reply({ success: false });
+					}
+				});
+			} else {
+				reply({ success: false });
 			}
 		}
 	}
