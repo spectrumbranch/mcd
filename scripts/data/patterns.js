@@ -8,12 +8,12 @@ module.exports = {
 		},
 		{
 			"name": "logout",
-			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (.+) left the game/,
+			"pattern": /^\[(\d+:\d+:\d+)\] \[Server thread\/INFO\]: (\w+) left the game/,
 			"output": ['time', 'user']
 		},
 		{
 			"name": "kill",
-			"pattern": /^(?:\[)(\d+:\d+:\d+)(?:\] \[Server thread\/INFO\]: )(\w+)(?: was slain by )(\w+)/,
+			"pattern": /^(?:\[)(\d+:\d+:\d+)(?:\] \[Server thread\/INFO\]: )(\w+)(?: was slain by )(.+)/,
 			"output": ['time', 'target', 'actor']
 		},
 		{
