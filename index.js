@@ -5,7 +5,8 @@ var server = new Hapi.Server('mc.spectrumbranch.com', 8123, {});
 var lib = require('./lib');
 var skins = lib.skins;
 skins.init();
-
+var crunch = lib.crunch;
+crunch.init();
 
 
 
