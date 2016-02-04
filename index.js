@@ -48,8 +48,50 @@ var getWhitelist = function(cb) {
 	});
 };
 
+var getFTBWhitelist = function(cb) {
+	var showUUID = true;
+	fs.readFile('/home/minecraft/ftb_minecraft/whitelist.json', function(err, data) {
+		if (err) {
+			cb(err, {});
+		} else {
+			var whitelistjson = JSON.parse(data);
+			if (!showUUID) {
+				for (var i = 0; i < whitelistjson.length; i++) {
+					delete whitelistjson[i]['uuid'];
+				}
+			}
+			cb(null, whitelistjson);
+		}
+	});
+};
+
 
 server.route([
+    {
+		method: 'POST',
+		path: '/ftb_minecraft/whitelist.json',
+		handler: function (request, reply) {
+			if (request.payload && request.payload.apikey) {
+				console.log('Hit whitelist at ' + new Date().toString() + ' by IP: ' + request.info.remoteAddress);
+				var apikey = request.payload.apikey;
+				isValidAPIKey(apikey, function(err, isValid) {
+					if (isValid) {
+						getFTBWhitelist(function(err, whitelist) {
+							if (err) {
+								reply({ success: false, error: err});
+							} else {
+								reply({ success: true, whitelist: whitelist });
+							}
+						});
+					} else {
+						reply({ success: false });
+					}
+				});
+			} else {
+				reply({ success: false });
+			}
+		}
+	},
 	{
 		method: 'POST',
 		path: '/apoc_minecraft/whitelist.json',
